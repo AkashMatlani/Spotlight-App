@@ -10,6 +10,14 @@ export default function _layout() {
             tabBarShowLabel: false,
             tabBarActiveTintColor: COLORS.primary,
             tabBarInactiveTintColor: COLORS.grey,
+            tabBarStyle: {
+                backgroundColor: "black",
+                borderTopWidth: 0,
+                position: 'absolute',
+                elevation: 0,
+                height: 40,
+                paddingBottom: 8,
+            }
         }}>
             <Tabs.Screen
                 name="index"
