@@ -1,8 +1,10 @@
 import { loginStyles } from '@/assets/style/login.style';
 import { useSSO } from '@clerk/clerk-expo';
+import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { COLORS } from '../constants/theme';
 
 export default function Login() {
 
@@ -43,7 +45,23 @@ export default function Login() {
         />
 
       </View>
-  
+
+      {/* Google Login */}
+      <View style={loginStyles.loginSection}>
+        <TouchableOpacity style={loginStyles.googleButton}
+          onPress={handleGoogleSignIn}
+          activeOpacity={0.9}>
+
+          <View style={loginStyles.googleIconContainer}>
+            <Ionicons name='logo-google' size={20} color={COLORS.surface}/>
+          </View>
+          <Text style={loginStyles.googleText}>Continue with google</Text>
+        </TouchableOpacity>
+
+        <Text style={loginStyles.termsText}>
+          By continuing, you agree to our Terms and Privacy Policy
+        </Text>
+      </View>
     </View>
   );
 }
