@@ -1,10 +1,11 @@
+import { loginStyles } from '@/assets/style/login.style';
 import { useSSO } from '@clerk/clerk-expo';
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 
 export default function Login() {
-    
+
   const { startSSOFlow } = useSSO();
   const router = useRouter();
 
@@ -24,12 +25,25 @@ export default function Login() {
   };
 
   return (
-    <View>
-      <TouchableOpacity onPress={handleGoogleSignIn}>
-        <Text>Login with Google</Text>
-      </TouchableOpacity>
+    <View style={loginStyles.container}>
+      <Image source={require('@/assets/images/adaptive-icon.png')}
+        style={loginStyles.logo}
+      />
+      <View style={loginStyles.logoText}>
+        <Text style={loginStyles.text}>Spotlight</Text>
+        <Text style={loginStyles.subText}>don't miss the anything</Text>
+      </View>
 
-      
+      {/* IllustationContainer*/}
+      <View style={loginStyles.illustationContainer}>
+        <Image
+          source={require('@/assets/images/auth-bg-2.png')}
+          resizeMode="cover"
+          style={loginStyles.illustration}
+        />
+
+      </View>
+  
     </View>
   );
 }
