@@ -10,8 +10,9 @@ export default defineSchema({
         followers: v.number(),
         following: v.number(),
         posts: v.number(),
-        clerkId: v.number(),
-    }).index("by_clerk_id", ["clerkId"]),
+        clerkId: v.string(),
+    }).index("by_clerk_id", ["clerkId"])
+    .index("by_email", ["email"]),
 
 
     posts: defineTable({

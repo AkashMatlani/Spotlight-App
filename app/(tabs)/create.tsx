@@ -1,10 +1,16 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import { useAuth } from '@clerk/clerk-expo';
+import React from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 export default function create() {
+
+  const {signOut} =useAuth();
   return (
     <View>
-      <Text>create</Text>
+      <TouchableOpacity onPress={()=>signOut()}>
+
+        <Text style={{color:"white"}}>Logout</Text>
+      </TouchableOpacity>
     </View>
   )
 }
