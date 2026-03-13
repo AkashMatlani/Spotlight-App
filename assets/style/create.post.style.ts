@@ -54,4 +54,41 @@ export const createStyles = StyleSheet.create({
     shareTextDisabled: {
         color: COLORS.grey,
     },
+    scrollContent: {
+        flexGrow: 1,
+    },
+    content: {
+        flex: 1,
+    },
+    contentDisabled: {
+        opacity: 0.7,
+    },
+    imageSection: {
+        height: height,
+        width: width,
+        backgroundColor: COLORS.surface,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    previewImage: {
+        width: "100%",
+        height: "100%",
+    },
+    changeImageButton: {
+        position: 'absolute',
+        bottom: 16,
+        right: 16,
+        backgroundColor: "rgba(0,0,0,0.75)",
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 8,
+        borderRadius: 8,
+        gap: 6,
+    },
+    changeImageText: {
+        color: COLORS.white,
+        fontSize: 14,
+        fontWeight: '500',
+    }
+
 });

@@ -1,10 +1,11 @@
 import { createStyles } from '@/assets/style/create.post.style';
 import { useUser } from '@clerk/clerk-expo';
 import { Ionicons } from '@expo/vector-icons';
+import { Image } from "expo-image";
 import * as ImagePicker from "expo-image-picker";
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
-import { ActivityIndicator, KeyboardAvoidingView, Platform, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, KeyboardAvoidingView, Platform, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { COLORS } from '../constants/theme';
 
 export default function CreateScreen() {
@@ -75,16 +76,36 @@ export default function CreateScreen() {
 
           <TouchableOpacity style={[createStyles.shareButton, isSharing && createStyles.shareButtonDisabled]}
             disabled={isSharing || !setSelectedImage}
-            onPress={handleShare}>
+          >
             {
               isSharing ? (<ActivityIndicator size={'small'} color={COLORS.primary}></ActivityIndicator>) : (
                 <Text style={createStyles.shareText}>Share</Text>
-
               )
             }
           </TouchableOpacity>
 
         </View>
+        <ScrollView
+          contentContainerStyle={createStyles.scrollContent}
+          bounces={false}
+          keyboardShouldPersistTaps={"handled"}>
+
+          <View style={[createStyles.content, isSharing && createStyles.contentDisabled]}>
+            <View style={createStyles.imageSection}>
+              <Image source={seletedImage}
+                style={createStyles.previewImage}
+                contentFit='cover'
+                transition={200}>
+              </Image>
+              <TouchableOpacity style={createStyles.changeImageButton}
+                onPress={pickImage}
+                disabled={isSharing}>
+                <Ionicons name='image-outline' size={20} color={COLORS.white}></Ionicons>
+                <Text style={createStyles.changeImageText}>Change</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </ScrollView>
       </View>
     </KeyboardAvoidingView >
   )
