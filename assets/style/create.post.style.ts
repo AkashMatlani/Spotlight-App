@@ -32,6 +32,26 @@ export const createStyles = StyleSheet.create({
     emptyImageText: {
         fontSize: 16,
         color: COLORS.grey,
-
-    }
+    },
+    contentContainer: {
+        flex: 1,
+    },
+    shareButton: {
+        paddingHorizontal: 12,
+        paddingVertical: 6,
+        minWidth: 60,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    shareButtonDisabled: {
+        opacity: 0.5,
+    },
+    shareText: {
+        color: COLORS.primary,
+        fontSize: 16,
+        fontWeight: "600",
+    },
+    shareTextDisabled: {
+        color: COLORS.grey,
+    },
 });

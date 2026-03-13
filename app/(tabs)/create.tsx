@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import * as ImagePicker from "expo-image-picker";
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, KeyboardAvoidingView, Platform, Text, TouchableOpacity, View } from 'react-native';
 import { COLORS } from '../constants/theme';
 
 export default function CreateScreen() {
@@ -14,6 +14,7 @@ export default function CreateScreen() {
 
   const [caption, setCaption] = useState("");
   const [seletedImage, setSelectedImage] = useState<string | null>(null);
+  const [isSharing, setIsSharing] = useState(false);
 
   const pickImage = async () => {
     const result = await ImagePicker.launchImageLibraryAsync(
@@ -49,11 +50,42 @@ export default function CreateScreen() {
     )
   }
 
-
-
   return (
-    <View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={createStyles.container}
+      keyboardVerticalOffset={Platform.OS === "ios" ? 20 : 0}>
 
-    </View>
+      <View style={createStyles.contentContainer}>
+        {/* Header */}
+        <View style={createStyles.header}>
+          <TouchableOpacity onPress={() => {
+            setSelectedImage(null);
+            setCaption("");
+          }}
+            disabled={isSharing}
+          >
+            <Ionicons
+              name='close-outline'
+              size={28}
+              color={isSharing ? COLORS.grey : COLORS.white}>
+            </Ionicons>
+          </TouchableOpacity>
+          <Text style={createStyles.headerTitle}>New Post</Text>
+
+          <TouchableOpacity style={[createStyles.shareButton, isSharing && createStyles.shareButtonDisabled]}
+            disabled={isSharing || !setSelectedImage}
+            onPress={handleShare}>
+            {
+              isSharing ? (<ActivityIndicator size={'small'} color={COLORS.primary}></ActivityIndicator>) : (
+                <Text style={createStyles.shareText}>Share</Text>
+
+              )
+            }
+          </TouchableOpacity>
+
+        </View>
+      </View>
+    </KeyboardAvoidingView >
   )
 }
