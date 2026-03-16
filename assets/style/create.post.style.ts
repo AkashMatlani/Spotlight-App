@@ -64,7 +64,7 @@ export const createStyles = StyleSheet.create({
         opacity: 0.7,
     },
     imageSection: {
-        height: height,
+        height: width,
         width: width,
         backgroundColor: COLORS.surface,
         justifyContent: 'center',
@@ -89,6 +89,27 @@ export const createStyles = StyleSheet.create({
         color: COLORS.white,
         fontSize: 14,
         fontWeight: '500',
+    },
+    inputSection: {
+        padding: 16,
+        flex: 1,
+    },
+    captionContainer: {
+        flexDirection: 'row',
+        alignItems: 'flex-start'
+    },
+    userAvatar: {
+        width: 36,
+        height: 36,
+        borderRadius: 18,
+        marginRight: 12,
+    },
+    captionInput:{
+        flex:1,
+        color:COLORS.white,
+        fontSize:16,
+        paddingTop:8,
+        minHeight:40,
     }
 
 });

@@ -5,7 +5,7 @@ import { Image } from "expo-image";
 import * as ImagePicker from "expo-image-picker";
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
-import { ActivityIndicator, KeyboardAvoidingView, Platform, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { COLORS } from '../constants/theme';
 
 export default function CreateScreen() {
@@ -88,7 +88,8 @@ export default function CreateScreen() {
         <ScrollView
           contentContainerStyle={createStyles.scrollContent}
           bounces={false}
-          keyboardShouldPersistTaps={"handled"}>
+          keyboardShouldPersistTaps={"handled"}
+          contentOffset={{x:0,y:100}}>
 
           <View style={[createStyles.content, isSharing && createStyles.contentDisabled]}>
             <View style={createStyles.imageSection}>
@@ -103,6 +104,28 @@ export default function CreateScreen() {
                 <Ionicons name='image-outline' size={20} color={COLORS.white}></Ionicons>
                 <Text style={createStyles.changeImageText}>Change</Text>
               </TouchableOpacity>
+            </View>
+            {/* Input Section */}
+            <View style={createStyles.inputSection}>
+
+              <View style={createStyles.captionContainer}>
+                <Image source={user?.imageUrl}
+                  style={createStyles.userAvatar}
+                  contentFit='cover'
+                  transition={200}>
+                </Image>
+                <TextInput style={createStyles.captionInput}
+                  placeholder='Write a caption...'
+                  placeholderTextColor={COLORS.grey}
+                  multiline
+                  value={caption}
+                  onChangeText={setCaption}
+                  editable={!isSharing}>
+                </TextInput>
+
+              </View>
+
+
             </View>
           </View>
         </ScrollView>
