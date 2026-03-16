@@ -1,12 +1,16 @@
 import { createStyles } from '@/assets/style/create.post.style';
+import { api } from '@/convex/_generated/api';
 import { useUser } from '@clerk/clerk-expo';
 import { Ionicons } from '@expo/vector-icons';
+import { useMutation } from 'convex/react';
 import { Image } from "expo-image";
 import * as ImagePicker from "expo-image-picker";
+
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { ActivityIndicator, KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { COLORS } from '../constants/theme';
+
 
 export default function CreateScreen() {
 
@@ -31,6 +35,42 @@ export default function CreateScreen() {
     }
   }
 
+  const generateUploadUrl = useMutation(api.posts.generateUploadUrl)
+
+  const createPost = useMutation(api.posts.createPost)
+
+  const handleShare = async () => {
+    console.log("Calling generateUploadUrl...");
+    const uploadURL = await generateUploadUrl();
+    console.log("Upload URL:", uploadURL);
+    if (!seletedImage) return;
+    try {
+      setIsSharing(true);
+      const uploadURL = await generateUploadUrl();
+
+      // convert image URI to blob
+      const response = await fetch(seletedImage);
+      const blob = await response.blob();
+      const uploadResult = await fetch(uploadURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "image/jpeg",
+        },
+        body: blob,
+      });
+
+      if (!uploadResult.ok) throw Error("Upload Failed");
+
+      const { storageId } = await uploadResult.json();
+      await createPost({ storageId, caption });
+      router.push("/(tabs)")
+    } catch (error) {
+      console.log("Error in Sharing Post")
+    }
+    finally {
+      setIsSharing(false)
+    }
+  }
   if (!seletedImage) {
     return (
       <View style={createStyles.container}>
@@ -76,6 +116,7 @@ export default function CreateScreen() {
 
           <TouchableOpacity style={[createStyles.shareButton, isSharing && createStyles.shareButtonDisabled]}
             disabled={isSharing || !setSelectedImage}
+            onPress={handleShare}
           >
             {
               isSharing ? (<ActivityIndicator size={'small'} color={COLORS.primary}></ActivityIndicator>) : (
@@ -89,7 +130,7 @@ export default function CreateScreen() {
           contentContainerStyle={createStyles.scrollContent}
           bounces={false}
           keyboardShouldPersistTaps={"handled"}
-          contentOffset={{x:0,y:100}}>
+          contentOffset={{ x: 0, y: 100 }}>
 
           <View style={[createStyles.content, isSharing && createStyles.contentDisabled]}>
             <View style={createStyles.imageSection}>
@@ -122,10 +163,7 @@ export default function CreateScreen() {
                   onChangeText={setCaption}
                   editable={!isSharing}>
                 </TextInput>
-
               </View>
-
-
             </View>
           </View>
         </ScrollView>
