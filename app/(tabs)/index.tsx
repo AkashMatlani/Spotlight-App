@@ -1,14 +1,20 @@
+import { feedStyles } from '@/assets/style/feed.style';
 import { useAuth } from '@clerk/clerk-expo';
+import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
+import { COLORS } from '../constants/theme';
 export default function Index() {
   const { signOut } = useAuth();
 
   return (
-    <View>
-      <TouchableOpacity onPress={() => signOut()}>
-        <Text style={{ color: "white" }}>Logout</Text>
-      </TouchableOpacity>
+    <View style={feedStyles.container}>
+      <View style={feedStyles.header}>
+       <Text style={feedStyles.headerTitle}>SpotLight</Text>
+       <TouchableOpacity onPress={()=>signOut()}>
+        <Ionicons name='log-out-outline' size={24} color={COLORS.white}></Ionicons>
+       </TouchableOpacity>
+      </View>
     </View>
   );
 }
