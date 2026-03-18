@@ -1,14 +1,24 @@
 import { feedStyles } from '@/assets/style/feed.style';
+import { api } from '@/convex/_generated/api';
 import { useAuth } from '@clerk/clerk-expo';
 import { Ionicons } from '@expo/vector-icons';
+import { useQuery } from 'convex/react';
 import React from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import Loader from '../components/Loader';
+import Post from '../components/post';
 import Story from '../components/story';
 import { STORIES } from '../constants/mock-data';
 import { COLORS } from '../constants/theme';
 export default function Index() {
   const { signOut } = useAuth();
 
+  const posts = useQuery(api.posts.getFeedPosts);
+
+  //undefined means loading state
+  if (posts === undefined) return <Loader />
+
+  if (posts.length === 0) return <NoPostsFound />
   return (
     <View style={feedStyles.container}>
       <View style={feedStyles.header}>
@@ -18,14 +28,33 @@ export default function Index() {
         </TouchableOpacity>
       </View>
 
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={feedStyles.storiesContainer}>
-        {STORIES.map((story) => (
-          <Story key={story.id} story={story} />
+      <ScrollView showsVerticalScrollIndicator={false}>
+
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={feedStyles.storiesContainer}>
+          {STORIES.map((story) => (
+            <Story key={story.id} story={story} />
+          ))}
+        </ScrollView>
+
+        {posts.map((post) => (
+          <Post key={post._id} post={post} />
         ))}
       </ScrollView>
     </View>
   );
 }
+
+const NoPostsFound = () => (
+  <View style={{
+    flex: 1,
+    backgroundColor: COLORS.background,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }}>
+
+    <Text style={{ fontSize: 20, color: COLORS.primary }}>No Posts Yet</Text>
+  </View>
+)

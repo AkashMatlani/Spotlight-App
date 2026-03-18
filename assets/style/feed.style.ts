@@ -50,9 +50,27 @@ export const feedStyles = StyleSheet.create({
         color: COLORS.white,
         textAlign: 'center',
     },
-    storiesContainer:{
-        paddingVertical:12,
-        borderBottomWidth:1,
-        borderBottomColor:COLORS.surface
+    storiesContainer: {
+        paddingVertical: 12,
+        borderBottomWidth: 1,
+        borderBottomColor: COLORS.surface
+    },
+    post: {
+        marginBottom: 16,
+    },
+    postHeaderLeft: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    postAvatar: {
+        width: 32,
+        height: 32,
+        borderRadius: 16,
+        marginRight: 8,
+    },
+    postUserName: {
+        fontSize: 14,
+        fontWeight: '600',
+        color: COLORS.white
     }
 })
