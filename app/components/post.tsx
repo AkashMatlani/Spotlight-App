@@ -1,8 +1,10 @@
 import { feedStyles } from '@/assets/style/feed.style'
+import { Ionicons } from '@expo/vector-icons'
 import { Image } from 'expo-image'
 import { Link } from 'expo-router'
 import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
+import { COLORS } from '../constants/theme'
 
 export default function Post({ post }: { post: any }) {
     return (
@@ -27,6 +29,20 @@ export default function Post({ post }: { post: any }) {
                 transition={200}
                 cachePolicy='memory-disk'>
             </Image>
+            {/* Post Actions */}
+            <View style={feedStyles.postAction}>
+                <View style={feedStyles.postActionsLeft}>
+                    <TouchableOpacity>
+                        <Ionicons name='heart-outline' size={24} color={COLORS.white}></Ionicons>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Ionicons name='chatbubble-outline' size={22} color={COLORS.white}></Ionicons>
+                    </TouchableOpacity>
+                </View>
+                <TouchableOpacity>
+                    <Ionicons name='bookmark-outline' size={22} color={COLORS.white}></Ionicons>
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }

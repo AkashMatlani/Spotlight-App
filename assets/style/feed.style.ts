@@ -78,5 +78,19 @@ export const feedStyles = StyleSheet.create({
     postImage: {
         width: width,
         height: width
+    },
+    postAction: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingHorizontal: 12,
+        paddingVertical: 12,
+
+    },
+    postActionsLeft: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 16,
+
     }
 })
