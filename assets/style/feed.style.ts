@@ -1,5 +1,7 @@
 import { COLORS } from '@/app/constants/theme';
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
+
+const { width, height } = Dimensions.get("window");
 
 export const feedStyles = StyleSheet.create({
     container: {
@@ -72,5 +74,9 @@ export const feedStyles = StyleSheet.create({
         fontSize: 14,
         fontWeight: '600',
         color: COLORS.white
+    },
+    postImage: {
+        width: width,
+        height: width
     }
 })

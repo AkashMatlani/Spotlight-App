@@ -8,17 +8,25 @@ export default function Post({ post }: { post: any }) {
     return (
         <View style={feedStyles.post}>
             {/* Post Header */}
-            <Link href={"/(tabs)/notifications"}></Link>
-            <TouchableOpacity style={feedStyles.postHeaderLeft}>
-                <Image
-                    source={post.author.image}
-                    style={feedStyles.postAvatar}
-                    contentFit='cover'
-                    transition={200}
-                    cachePolicy='memory-disk'
-                ></Image>
-                <Text style={feedStyles.postUserName}>{post.author.username}</Text>
-            </TouchableOpacity>
+            <Link href={"/(tabs)/notifications"}>
+                <TouchableOpacity style={feedStyles.postHeaderLeft}>
+                    <Image
+                        source={post.author.image}
+                        style={feedStyles.postAvatar}
+                        contentFit='cover'
+                        transition={200}
+                        cachePolicy='memory-disk'
+                    ></Image>
+                    <Text style={feedStyles.postUserName}>{post.author.username}</Text>
+                </TouchableOpacity>
+            </Link>
+
+            <Image source={post.imageUrl}
+                style={feedStyles.postImage}
+                contentFit='cover'
+                transition={200}
+                cachePolicy='memory-disk'>
+            </Image>
         </View>
     )
 }
