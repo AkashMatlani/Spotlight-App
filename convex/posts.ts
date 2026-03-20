@@ -29,7 +29,7 @@ export const createPost = mutation({
             imageUrl,
             storageId: args.storageId,
             caption: args.caption,
-            like: 0,
+            likes: 0,
             comments: 0,
         });
 
@@ -50,7 +50,8 @@ export const getFeedPosts = query({
         //enhance posts with userdata and interactaion status
 
         const postWithInfo = await Promise.all(posts.map(async (post) => {
-            const postAuthor = await ctx.db.get(post.userId)
+
+            const postAuthor = (await ctx.db.get(post.userId))!;
 
             const like = await ctx.db.query("likes")
                 .withIndex("by_user_and_post",

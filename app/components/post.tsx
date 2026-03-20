@@ -1,4 +1,5 @@
 import { feedStyles } from '@/assets/style/feed.style'
+import { Id } from '@/convex/_generated/dataModel'
 import { Ionicons } from '@expo/vector-icons'
 import { Image } from 'expo-image'
 import { Link } from 'expo-router'
@@ -6,7 +7,25 @@ import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { COLORS } from '../constants/theme'
 
-export default function Post({ post }: { post: any }) {
+
+type PostProps = {
+    post: {
+        _id: Id<"posts">;
+        imageUrl: string,
+        caption?: string;
+        likes: number,
+        comments: number,
+        _creationTime: number,
+        isLiked: boolean,
+        isBookmarked: boolean,
+        author: {
+            _id: string,
+            username: string,
+            image: string,
+        };
+    };
+};
+export default function Post({ post }: PostProps) {
     return (
         <View style={feedStyles.post}>
             {/* Post Header */}
@@ -23,12 +42,18 @@ export default function Post({ post }: { post: any }) {
                 </TouchableOpacity>
             </Link>
 
+            <TouchableOpacity
+            >
+                <Ionicons name='trash-outline' size={20} color={COLORS.primary} />
+            </TouchableOpacity>
+
             <Image source={post.imageUrl}
                 style={feedStyles.postImage}
                 contentFit='cover'
                 transition={200}
                 cachePolicy='memory-disk'>
             </Image>
+
             {/* Post Actions */}
             <View style={feedStyles.postAction}>
                 <View style={feedStyles.postActionsLeft}>
