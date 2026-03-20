@@ -92,5 +92,41 @@ export const feedStyles = StyleSheet.create({
         alignItems: 'center',
         gap: 16,
 
+    },
+    postInfo: {
+        paddingHorizontal: 12,
+    },
+    likeText: {
+        fontSize: 14,
+        fontWeight: '600',
+        color: COLORS.white,
+        marginBottom: 6,
+    },
+    captionContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        marginBottom: 6,
+    },
+    captionUsername: {
+        fontSize: 14,
+        fontWeight: '600',
+        color: COLORS.white,
+        marginRight: 6,
+    },
+    captionText: {
+        fontSize: 14,
+        color: COLORS.white,
+        flex: 1,
+    },
+    commentsText: {
+        fontSize: 14,
+        color: COLORS.grey,
+        marginBottom: 4,
+    },
+    timeAgo: {
+        fontSize: 12,
+        color: COLORS.grey,
+        marginBottom: 8,
     }
+
 })

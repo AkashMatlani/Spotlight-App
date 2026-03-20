@@ -43,6 +43,23 @@ export default function Post({ post }: { post: any }) {
                     <Ionicons name='bookmark-outline' size={22} color={COLORS.white}></Ionicons>
                 </TouchableOpacity>
             </View>
+
+            {/* POST INFO */}
+            <View style={feedStyles.postInfo}>
+                <Text style={feedStyles.likeText}>Be the first to like</Text>
+                {post.caption && (
+                    <View style={feedStyles.captionContainer}>
+                        <Text style={feedStyles.captionUsername}>{post.author.username}</Text>
+                        <Text style={feedStyles.captionText}>{post.caption}</Text>
+                    </View>
+                )}
+
+                <TouchableOpacity>
+                    <Text style={feedStyles.commentsText}>View all 2 comments</Text>
+                </TouchableOpacity>
+
+                <Text style={feedStyles.timeAgo}> 2 Hours ago</Text>
+            </View>
         </View>
     )
 }
