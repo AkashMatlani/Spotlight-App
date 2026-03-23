@@ -1,9 +1,11 @@
 import { feedStyles } from '@/assets/style/feed.style'
+import { api } from '@/convex/_generated/api'
 import { Id } from '@/convex/_generated/dataModel'
 import { Ionicons } from '@expo/vector-icons'
+import { useMutation } from 'convex/react'
 import { Image } from 'expo-image'
 import { Link } from 'expo-router'
-import React from 'react'
+import React, { useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { COLORS } from '../constants/theme'
 
@@ -26,6 +28,23 @@ type PostProps = {
     };
 };
 export default function Post({ post }: PostProps) {
+    const [isLiked, setIsLiked] = useState(post.isLiked);
+    const [likesCount, setLikesCount] = useState(post.likes);
+
+    const toggleLike = useMutation(api.posts.toggleLike);
+
+    const handleLike = async () => {
+        try {
+            const newIsLiked = await toggleLike({ postId: post._id })
+            setIsLiked(newIsLiked);
+            setLikesCount((prev) => (newIsLiked ? prev + 1 : prev - 1))
+        } catch (error) {
+            console.error("Error in toogle Like", error);
+
+        }
+
+    }
+
     return (
         <View style={feedStyles.post}>
             {/* Post Header */}
@@ -57,8 +76,10 @@ export default function Post({ post }: PostProps) {
             {/* Post Actions */}
             <View style={feedStyles.postAction}>
                 <View style={feedStyles.postActionsLeft}>
-                    <TouchableOpacity>
-                        <Ionicons name='heart-outline' size={24} color={COLORS.white}></Ionicons>
+                    <TouchableOpacity onPress={handleLike}>
+                        <Ionicons name={isLiked ? "heart" : 'heart-outline'} size={24}
+                            color={isLiked ? COLORS.primary : COLORS.white}
+                        ></Ionicons>
                     </TouchableOpacity>
                     <TouchableOpacity>
                         <Ionicons name='chatbubble-outline' size={22} color={COLORS.white}></Ionicons>
@@ -71,7 +92,9 @@ export default function Post({ post }: PostProps) {
 
             {/* POST INFO */}
             <View style={feedStyles.postInfo}>
-                <Text style={feedStyles.likeText}>Be the first to like</Text>
+                <Text style={feedStyles.likeText}>
+                    {likesCount > 0 ? `${likesCount.toLocaleString()} likes` : "Be the first to Like"}
+                </Text>
                 {post.caption && (
                     <View style={feedStyles.captionContainer}>
                         <Text style={feedStyles.captionUsername}>{post.author.username}</Text>
