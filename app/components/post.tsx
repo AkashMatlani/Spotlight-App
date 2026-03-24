@@ -40,9 +40,7 @@ export default function Post({ post }: PostProps) {
             setLikesCount((prev) => (newIsLiked ? prev + 1 : prev - 1))
         } catch (error) {
             console.error("Error in toogle Like", error);
-
         }
-
     }
 
     return (

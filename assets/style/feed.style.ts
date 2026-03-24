@@ -21,6 +21,7 @@ export const feedStyles = StyleSheet.create({
     headerTitle: {
         fontSize: 24,
         color: COLORS.primary,
+        fontFamily:"JetBrainsMono-Medium"
     },
     storyWrapper: {
         alignItems: 'center',
