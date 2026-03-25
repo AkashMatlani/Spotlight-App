@@ -1,5 +1,5 @@
 import { ConvexError, v } from "convex/values";
-import { mutation } from "./_generated/server";
+import { mutation, query } from "./_generated/server";
 import { getAuthenticatedUser } from "./users";
 
 export const addComment = mutation({
@@ -33,5 +33,29 @@ export const addComment = mutation({
             });
         }
         return commentId;
+    }
+})
+
+export const getComment = query({
+    args: { postId: v.id("posts") },
+    handler: async (ctx, args) => {
+
+        const comments = await ctx.db.query("comments")
+            .withIndex("by_post", q => q.eq("postId", args.postId))
+            .collect();
+
+        const commentsInfo = await Promise.all(
+            comments.map(async (comment) => {
+                const user = await ctx.db.get(comment.userId);
+                return {
+                    ...comment,
+                    user: {
+                        fullname: user!.fullname,
+                        image: user!.image,
+                    },
+                };
+            })
+        );
+        return commentsInfo;
     }
 })
