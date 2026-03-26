@@ -1,6 +1,6 @@
 import ClearkAndConvexProvider from "@/providers/ConvexAndProvider";
 import { useFonts } from "expo-font";
-import { SplashScreen } from "expo-router";
+import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from "react";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import IntialLayout from "./components/IntialLayout";

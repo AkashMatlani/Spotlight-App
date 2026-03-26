@@ -1,5 +1,5 @@
 import { COLORS } from '@/app/constants/theme';
-import { Dimensions, StyleSheet } from 'react-native';
+import { Dimensions, Platform, StyleSheet } from 'react-native';
 
 const { width, height } = Dimensions.get("window");
 
@@ -21,7 +21,7 @@ export const feedStyles = StyleSheet.create({
     headerTitle: {
         fontSize: 24,
         color: COLORS.primary,
-        fontFamily:"JetBrainsMono-Medium"
+        fontFamily: "JetBrainsMono-Medium"
     },
     storyWrapper: {
         alignItems: 'center',
@@ -128,6 +128,27 @@ export const feedStyles = StyleSheet.create({
         fontSize: 12,
         color: COLORS.grey,
         marginBottom: 8,
+    },
+
+    modalConatiner: {
+        backgroundColor: COLORS.background,
+        marginBottom: Platform.OS === "ios" ? 44 : 0,
+        flex: 1,
+        marginTop: Platform.OS === "ios" ? 44 : 0,
+    },
+    modalHeader: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingHorizontal: 16,
+        height: 56,
+        borderBottomWidth: 0.5,
+        borderBottomColor: COLORS.surface
+    },
+    modalTitle: {
+        fontSize: 16,
+        color: COLORS.white,
+        fontWeight: '600',
     }
 
 })

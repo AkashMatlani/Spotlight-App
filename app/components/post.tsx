@@ -8,6 +8,7 @@ import { Link } from 'expo-router'
 import React, { useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { COLORS } from '../constants/theme'
+import CommentsModal from './CommentsModal'
 
 
 type PostProps = {
@@ -30,6 +31,8 @@ type PostProps = {
 export default function Post({ post }: PostProps) {
     const [isLiked, setIsLiked] = useState(post.isLiked);
     const [likesCount, setLikesCount] = useState(post.likes);
+    const [commentsCount, setcommentsCount] = useState(post.comments);
+    const [showComments, setshowComments] = useState(false);
 
     const toggleLike = useMutation(api.posts.toggleLike);
 
@@ -106,6 +109,12 @@ export default function Post({ post }: PostProps) {
 
                 <Text style={feedStyles.timeAgo}> 2 Hours ago</Text>
             </View>
+            <CommentsModal
+                postId={post._id}
+                visible={showComments}
+                onClose={() => setshowComments(false)}
+                onCommentsAdded={() => setcommentsCount((prev) => prev + 1)}
+            />
         </View>
     )
 }
