@@ -82,7 +82,7 @@ export default function Post({ post }: PostProps) {
                             color={isLiked ? COLORS.primary : COLORS.white}
                         ></Ionicons>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>setshowComments(true)}>
                         <Ionicons name='chatbubble-outline' size={22} color={COLORS.white}></Ionicons>
                     </TouchableOpacity>
                 </View>

@@ -149,6 +149,40 @@ export const feedStyles = StyleSheet.create({
         fontSize: 16,
         color: COLORS.white,
         fontWeight: '600',
+    },
+    contentsList: {
+        flex: 1,
+    },
+    commentsConatiner: {
+        flexDirection: 'row',
+        paddingHorizontal: 16,
+        paddingVertical: 12,
+        borderBottomWidth: 0.5,
+        borderBlockColor: COLORS.surface,
+    },
+    commentAvatar: {
+        width: 32,
+        height: 32,
+        borderRadius: 16,
+        marginRight: 12,
+    },
+    commentContent: {
+        flex: 1,
+    },
+    commentUsername: {
+        color: COLORS.white,
+        fontWeight: '500',
+        marginBottom: 4,
+    },
+    commentText: {
+        color: COLORS.white,
+        fontSize: 14,
+        lineHeight: 20,
+    },
+    commentTime:{
+        color:COLORS.grey,
+        fontSize:12,
+        marginTop:4,
     }
 
 })
