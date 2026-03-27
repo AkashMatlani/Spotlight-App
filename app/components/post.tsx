@@ -3,6 +3,7 @@ import { api } from '@/convex/_generated/api'
 import { Id } from '@/convex/_generated/dataModel'
 import { Ionicons } from '@expo/vector-icons'
 import { useMutation } from 'convex/react'
+import { formatDistanceToNow } from 'date-fns'
 import { Image } from 'expo-image'
 import { Link } from 'expo-router'
 import React, { useState } from 'react'
@@ -103,11 +104,13 @@ export default function Post({ post }: PostProps) {
                     </View>
                 )}
 
-                <TouchableOpacity onPress={() => setshowComments(true)}>
-                    <Text style={feedStyles.commentsText}>View all 2 {commentsCount} comments</Text>
-                </TouchableOpacity>
+                {commentsCount > 0 && (
+                    <TouchableOpacity onPress={() => setshowComments(true)}>
+                        <Text style={feedStyles.commentsText}>View all 2 {commentsCount} comments</Text>
+                    </TouchableOpacity>
+                )}
 
-                <Text style={feedStyles.timeAgo}> 2 Hours ago</Text>
+                <Text style={feedStyles.timeAgo}> {formatDistanceToNow(post._creationTime, { addSuffix: true })}</Text>
             </View>
             <CommentsModal
                 postId={post._id}
