@@ -82,7 +82,7 @@ export default function Post({ post }: PostProps) {
                             color={isLiked ? COLORS.primary : COLORS.white}
                         ></Ionicons>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={()=>setshowComments(true)}>
+                    <TouchableOpacity onPress={() => setshowComments(true)}>
                         <Ionicons name='chatbubble-outline' size={22} color={COLORS.white}></Ionicons>
                     </TouchableOpacity>
                 </View>
@@ -103,8 +103,8 @@ export default function Post({ post }: PostProps) {
                     </View>
                 )}
 
-                <TouchableOpacity>
-                    <Text style={feedStyles.commentsText}>View all 2 comments</Text>
+                <TouchableOpacity onPress={() => setshowComments(true)}>
+                    <Text style={feedStyles.commentsText}>View all 2 {commentsCount} comments</Text>
                 </TouchableOpacity>
 
                 <Text style={feedStyles.timeAgo}> 2 Hours ago</Text>
