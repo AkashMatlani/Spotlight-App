@@ -89,7 +89,6 @@ export const toggleLike = mutation({
         const existing = await ctx.db.query("likes")
             .withIndex("by_user_and_post", (q) => q.eq("userId", currentUser._id).eq("postId", args.postId)).first();
 
-
         const post = await ctx.db.get(args.postId);
         if (!post) throw new Error("Post not found");
 

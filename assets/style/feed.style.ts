@@ -179,10 +179,29 @@ export const feedStyles = StyleSheet.create({
         fontSize: 14,
         lineHeight: 20,
     },
-    commentTime:{
-        color:COLORS.grey,
-        fontSize:12,
-        marginTop:4,
+    commentTime: {
+        color: COLORS.grey,
+        fontSize: 12,
+        marginTop: 4,
+    },
+    commentInput: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingHorizontal: 16,
+        paddingVertical: 12,
+        borderTopWidth: 0.5,
+        borderTopColor: COLORS.surface,
+        backgroundColor: COLORS.background,
+    },
+    input:{
+        flex:1,
+        color:COLORS.white,
+        paddingVertical:8,
+        paddingHorizontal:16,
+        marginRight:12,
+        backgroundColor:COLORS.surface,
+        borderRadius:20,
+        fontSize:14,
     }
 
 })

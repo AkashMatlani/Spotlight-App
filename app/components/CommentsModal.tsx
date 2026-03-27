@@ -4,7 +4,7 @@ import { Id } from '@/convex/_generated/dataModel'
 import { Ionicons } from '@expo/vector-icons'
 import { useMutation, useQuery } from 'convex/react'
 import React, { useState } from 'react'
-import { FlatList, KeyboardAvoidingView, Modal, Platform, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, KeyboardAvoidingView, Modal, Platform, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { COLORS } from '../constants/theme'
 import Comment from './Comment'
 import Loader from './Loader'
@@ -45,6 +45,16 @@ export default function CommentsModal({ onClose, onCommentsAdded, postId, visibl
                         />
                     )
                 }
+                <View style={feedStyles.commentInput}>
+                    <TextInput
+                        style={feedStyles.input}
+                        placeholder='Add a comment'
+                        placeholderTextColor={COLORS.grey}
+                        value={newComments}
+                        onChangeText={setNewComments}
+                        multiline
+                    ></TextInput>
+                </View>
             </KeyboardAvoidingView>
         </Modal>
     )
