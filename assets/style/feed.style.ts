@@ -193,15 +193,27 @@ export const feedStyles = StyleSheet.create({
         borderTopColor: COLORS.surface,
         backgroundColor: COLORS.background,
     },
-    input:{
-        flex:1,
-        color:COLORS.white,
-        paddingVertical:8,
-        paddingHorizontal:16,
-        marginRight:12,
-        backgroundColor:COLORS.surface,
-        borderRadius:20,
-        fontSize:14,
+    input: {
+        flex: 1,
+        color: COLORS.white,
+        paddingVertical: 8,
+        paddingHorizontal: 16,
+        marginRight: 12,
+        backgroundColor: COLORS.surface,
+        borderRadius: 20,
+        fontSize: 14,
+    },
+    postButton: {
+        color: COLORS.primary,
+        fontWeight: "600",
+        fontSize: 14,
+    },
+    postButtonDisabled: {
+        opacity: 0.5,
+    },
+    centerd:{
+        justifyContent:'center',
+        alignItems:'center',
     }
 
 })

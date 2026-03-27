@@ -20,6 +20,20 @@ export default function CommentsModal({ onClose, onCommentsAdded, postId, visibl
     const [newComments, setNewComments] = useState("");
     const comments = useQuery(api.comments.getComment, { postId });
     const addComments = useMutation(api.comments.addComment);
+
+    const handleAddComment = async () => {
+        if (!newComments.trim()) return;
+        try {
+            await addComments({
+                postId: postId,
+                content: newComments
+            });
+            setNewComments("")
+            onCommentsAdded()
+        } catch (error) {
+            console.log("Error adding comment:", error);
+        }
+    }
     return (
         <Modal visible={visible} animationType='slide' transparent={true}>
             <KeyboardAvoidingView
@@ -54,6 +68,12 @@ export default function CommentsModal({ onClose, onCommentsAdded, postId, visibl
                         onChangeText={setNewComments}
                         multiline
                     ></TextInput>
+
+                    <TouchableOpacity onPress={handleAddComment} disabled={!newComments.trim()}>
+                        <Text style={[feedStyles.postButton, !newComments.trim() && feedStyles.postButtonDisabled]}>
+                            Post
+                        </Text>
+                    </TouchableOpacity>
                 </View>
             </KeyboardAvoidingView>
         </Modal>
