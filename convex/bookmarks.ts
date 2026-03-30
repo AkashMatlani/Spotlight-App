@@ -1,5 +1,5 @@
 import { v } from "convex/values";
-import { mutation } from "./_generated/server";
+import { mutation, query } from "./_generated/server";
 import { getAuthenticatedUser } from "./users";
 
 export const toggelMutation = mutation({
@@ -23,4 +23,28 @@ export const toggelMutation = mutation({
             return true;
         }
     }
-})
+});
+
+export const getBookmarkPosts = query({
+    handler: async (ctx) => {
+        const currentUser = await getAuthenticatedUser(ctx);
+
+        //get all bookmarks of the current user
+
+        const bookmarks = await ctx.db.
+            query("bookmarks")
+            .withIndex("by_user", (q) => q.eq("userId", currentUser._id))
+            .order("desc")
+            .collect();
+
+        const bookmarksWithPostInfo = await Promise.all(
+            bookmarks.map(async (bookmark) => {
+                const post = await ctx.db.get("posts", bookmark.postId);
+                if (!post) return null;
+                return post;
+            })
+        );
+        return bookmarksWithPostInfo;
+    },
+
+});

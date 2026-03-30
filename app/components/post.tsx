@@ -106,7 +106,7 @@ export default function Post({ post }: PostProps) {
 
                 {commentsCount > 0 && (
                     <TouchableOpacity onPress={() => setshowComments(true)}>
-                        <Text style={feedStyles.commentsText}>View all 2 {commentsCount} comments</Text>
+                        <Text style={feedStyles.commentsText}>View all {commentsCount} comments</Text>
                     </TouchableOpacity>
                 )}
 
