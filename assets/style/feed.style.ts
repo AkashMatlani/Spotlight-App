@@ -61,6 +61,13 @@ export const feedStyles = StyleSheet.create({
     post: {
         marginBottom: 16,
     },
+    postHeader:{
+        flexDirection:"row",
+        alignItems:'center',
+        justifyContent:'space-between',
+        padding:12,
+    },
+
     postHeaderLeft: {
         flexDirection: 'row',
         alignItems: 'center'

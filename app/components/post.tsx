@@ -1,8 +1,9 @@
 import { feedStyles } from '@/assets/style/feed.style'
 import { api } from '@/convex/_generated/api'
 import { Id } from '@/convex/_generated/dataModel'
+import { useUser } from '@clerk/clerk-expo'
 import { Ionicons } from '@expo/vector-icons'
-import { useMutation } from 'convex/react'
+import { useMutation, useQuery } from 'convex/react'
 import { formatDistanceToNow } from 'date-fns'
 import { Image } from 'expo-image'
 import { Link } from 'expo-router'
@@ -39,6 +40,12 @@ export default function Post({ post }: PostProps) {
 
     const toggleLike = useMutation(api.posts.toggleLike);
     const toogleBookmark = useMutation(api.bookmarks.toggelMutation);
+    const deletePost = useMutation(api.posts.deletePost);
+
+    const { user } = useUser();
+
+    const currentUser = useQuery(api.users.getUserByClerkId, user ? { clearkId: user.id } : "skip")
+
 
     const handleLike = async () => {
         try {
@@ -55,26 +62,46 @@ export default function Post({ post }: PostProps) {
         setIsBookmarked(newIsBookmarked);
     }
 
+    const handleDelete = async () => {
+        try {
+            await deletePost({ postId: post._id })
+        } catch (error) {
+            console.error("Error in deleting post", error);
+        }
+    }
+
     return (
         <View style={feedStyles.post}>
             {/* Post Header */}
-            <Link href={"/(tabs)/notifications"}>
-                <TouchableOpacity style={feedStyles.postHeaderLeft}>
-                    <Image
-                        source={post.author.image}
-                        style={feedStyles.postAvatar}
-                        contentFit='cover'
-                        transition={200}
-                        cachePolicy='memory-disk'
-                    ></Image>
-                    <Text style={feedStyles.postUserName}>{post.author.username}</Text>
-                </TouchableOpacity>
-            </Link>
+            <View style={feedStyles.postHeader}>
+                <Link href={"/(tabs)/notifications"}>
+                    <TouchableOpacity style={feedStyles.postHeaderLeft}>
+                        <Image
+                            source={post.author.image}
+                            style={feedStyles.postAvatar}
+                            contentFit='cover'
+                            transition={200}
+                            cachePolicy='memory-disk'
+                        ></Image>
+                        <Text style={feedStyles.postUserName}>{post.author.username}</Text>
+                    </TouchableOpacity>
+                </Link>
 
-            <TouchableOpacity
-            >
-                <Ionicons name='trash-outline' size={20} color={COLORS.primary} />
-            </TouchableOpacity>
+                {/* if i am the owwner, show delete button */}
+
+                {post.author._id === currentUser?._id ? (
+                    <TouchableOpacity onPress={handleDelete}>
+                        <Ionicons name='trash-outline' size={20} color={COLORS.primary} />
+                    </TouchableOpacity>
+                )
+                    :
+                    (
+                        <TouchableOpacity>
+                            <Ionicons name="ellipsis-horizontal" size={20} color={COLORS.white} />
+                        </TouchableOpacity>
+                    )}
+            </View>
+
 
             <Image source={post.imageUrl}
                 style={feedStyles.postImage}
