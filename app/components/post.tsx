@@ -102,7 +102,6 @@ export default function Post({ post }: PostProps) {
                     )}
             </View>
 
-
             <Image source={post.imageUrl}
                 style={feedStyles.postImage}
                 contentFit='cover'
