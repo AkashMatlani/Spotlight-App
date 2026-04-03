@@ -74,6 +74,9 @@ export const nofificationStyle = StyleSheet.create({
         color:COLORS.grey,
         fontSize:14,
         marginBottom:2,
+    },
+    timeAgo:{
+        color:COLORS.grey,
+        fontSize:12,
     }
-
 })

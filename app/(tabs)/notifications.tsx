@@ -2,6 +2,7 @@ import { nofificationStyle } from '@/assets/style/notifications.style'
 import { api } from '@/convex/_generated/api'
 import { Ionicons } from '@expo/vector-icons'
 import { useQuery } from 'convex/react'
+import { formatDistanceToNow } from 'date-fns'
 import { Image } from 'expo-image'
 import { Link } from 'expo-router'
 import React from 'react'
@@ -65,25 +66,27 @@ function NotificationItem({ notification }: any) {
 
         <View style={nofificationStyle.notificationInfo}>
           <Link href={"/notifications"} asChild>
-          <TouchableOpacity>
-            <Text style={nofificationStyle.userName}>{notification.sender.username}</Text>
-          </TouchableOpacity>
+            <TouchableOpacity>
+              <Text style={nofificationStyle.userName}>{notification.sender.username}</Text>
+            </TouchableOpacity>
           </Link>
 
           <Text style={nofificationStyle.action}>
-            {notification.type==="follow" ? 
-            "started following you"
-            :
-            notification.type==="like"
-            ? "liked your post"
-            :
-            `commented: "${notification.comment}"`}
+            {notification.type === "follow" ?
+              "started following you"
+              :
+              notification.type === "like"
+                ? "liked your post"
+                :
+                `commented: "${notification.comment}"`}
+          </Text>
+          <Text style={nofificationStyle.timeAgo}>
+            {formatDistanceToNow(notification._creationTime, { addSuffix: true })}
           </Text>
         </View>
-
-
       </View>
 
-    </View>)
+    </View>
+    )
 
 }
