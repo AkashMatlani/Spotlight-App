@@ -62,6 +62,13 @@ function NotificationItem({ notification }: any) {
             </View>
           </TouchableOpacity>
         </Link>
+
+        <View style={nofificationStyle.notificationInfo}>
+          <Link href={"/notifications"} asChild></Link>
+          <TouchableOpacity>
+            <Text style={nofificationStyle.userName}>{notification.sender.username}</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
     </View>)

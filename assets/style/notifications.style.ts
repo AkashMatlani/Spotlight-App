@@ -60,6 +60,15 @@ export const nofificationStyle = StyleSheet.create({
         justifyContent: "center",
         borderWidth: 2,
         borderColor: COLORS.surface,
+    },
+    notificationInfo: {
+        flex: 1,
+    },
+    userName: {
+        color: COLORS.white,
+        fontSize: 14,
+        fontWeight: "600",
+        marginBottom: 2,
     }
 
 })
