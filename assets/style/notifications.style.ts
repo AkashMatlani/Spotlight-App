@@ -69,6 +69,11 @@ export const nofificationStyle = StyleSheet.create({
         fontSize: 14,
         fontWeight: "600",
         marginBottom: 2,
+    },
+    action:{
+        color:COLORS.grey,
+        fontSize:14,
+        marginBottom:2,
     }
 
 })

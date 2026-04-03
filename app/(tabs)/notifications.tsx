@@ -64,11 +64,24 @@ function NotificationItem({ notification }: any) {
         </Link>
 
         <View style={nofificationStyle.notificationInfo}>
-          <Link href={"/notifications"} asChild></Link>
+          <Link href={"/notifications"} asChild>
           <TouchableOpacity>
             <Text style={nofificationStyle.userName}>{notification.sender.username}</Text>
           </TouchableOpacity>
+          </Link>
+
+          <Text style={nofificationStyle.action}>
+            {notification.type==="follow" ? 
+            "started following you"
+            :
+            notification.type==="like"
+            ? "liked your post"
+            :
+            `commented: "${notification.comment}"`}
+          </Text>
         </View>
+
+
       </View>
 
     </View>)
