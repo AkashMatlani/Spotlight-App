@@ -21,6 +21,45 @@ export const nofificationStyle = StyleSheet.create({
         fontSize: 22,
         fontFamily: "jetbrains-mono-bold",
         color: COLORS.primary,
+    },
+    listContainer: {
+        padding: 16,
+    },
+    notificationItem: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: 20,
+    },
+    notificationContent: {
+        flex: 1,
+        flexDirection: "row",
+        alignItems: "center",
+        marginRight: 12,
+    },
+    avatarConatiner: {
+        position: "relative",
+        marginRight: 12,
+    },
+    avatar: {
+        width: 44,
+        height: 44,
+        borderRadius: 22,
+        borderWidth: 2,
+        borderColor: COLORS.surface,
+    },
+    iconBadge: {
+        position: "absolute",
+        bottom: -4,
+        right: -4,
+        backgroundColor: COLORS.background,
+        borderRadius: 12,
+        width: 24,
+        height: 24,
+        alignItems: "center",
+        justifyContent: "center",
+        borderWidth: 2,
+        borderColor: COLORS.surface,
     }
 
 })
