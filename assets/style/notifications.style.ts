@@ -10,6 +10,17 @@ export const nofificationStyle = StyleSheet.create({
     centerd: {
         justifyContent: "center",
         alignItems: "center",
+    },
+    header: {
+        paddingHorizontal: 16,
+        paddingVertical: 12,
+        borderBottomWidth: 0.5,
+        borderBottomColor: COLORS.surface,
+    },
+    headerTitle: {
+        fontSize: 22,
+        fontFamily: "jetbrains-mono-bold",
+        color: COLORS.primary,
     }
 
 })

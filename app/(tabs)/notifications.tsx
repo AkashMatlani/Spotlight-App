@@ -15,8 +15,10 @@ export default function notifications() {
 
   if (notifications.length === 0) return <NoNotificationFound />
   return (
-    <View>
-      <Text>notifications</Text>
+    <View style={nofificationStyle.container}>
+      <View style={nofificationStyle.header}>
+      <Text style={nofificationStyle.headerTitle}>Notifications</Text>
+      </View>
     </View>
   )
 }
