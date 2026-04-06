@@ -70,13 +70,18 @@ export const nofificationStyle = StyleSheet.create({
         fontWeight: "600",
         marginBottom: 2,
     },
-    action:{
-        color:COLORS.grey,
-        fontSize:14,
-        marginBottom:2,
+    action: {
+        color: COLORS.grey,
+        fontSize: 14,
+        marginBottom: 2,
     },
-    timeAgo:{
-        color:COLORS.grey,
-        fontSize:12,
+    timeAgo: {
+        color: COLORS.grey,
+        fontSize: 12,
+    },
+    postImage: {
+        width: 44,
+        height: 44,
+        borderRadius: 6,
     }
 })

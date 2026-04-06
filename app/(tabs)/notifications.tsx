@@ -42,7 +42,6 @@ function NoNotificationFound() {
 }
 
 function NotificationItem({ notification }: any) {
-
   return (
     <View style={nofificationStyle.notificationItem}>
       <View style={nofificationStyle.notificationContent}>
@@ -86,7 +85,14 @@ function NotificationItem({ notification }: any) {
         </View>
       </View>
 
+      {notification.post && (
+        <Image source={notification.post.imageUrl}
+          style={nofificationStyle.postImage}
+          contentFit='cover'
+          transition={200} />
+      )}
+
     </View>
-    )
+  )
 
 }
