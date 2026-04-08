@@ -40,6 +40,21 @@ export default function profile() {
               contentFit='cover'
               transition={200} />
           </View>
+
+          <View style={profileStyle.statsContiner}>
+            <View style={profileStyle.statItem}>
+              <Text style={profileStyle.statNumber}>{currentUser?.posts}</Text>
+              <Text style={profileStyle.statLabel}>post</Text>
+            </View>
+            <View style={profileStyle.statItem}>
+               <Text style={profileStyle.statNumber}>{currentUser?.followers}</Text>
+               <Text style={profileStyle.statLabel}>Followers</Text>
+            </View>
+              <View style={profileStyle.statItem}>
+              <Text style={profileStyle.statNumber}>{currentUser?.following}</Text>
+              <Text style={profileStyle.statLabel}>Following</Text>
+            </View>
+          </View>
         </View>
       </ScrollView>
     </View>

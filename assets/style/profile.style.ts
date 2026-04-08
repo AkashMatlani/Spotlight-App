@@ -50,6 +50,23 @@ export const profileStyle = StyleSheet.create({
         borderRadius: 43,
         borderWidth: 2,
         borderColor: COLORS.surface,
+    },
+    statsContiner: {
+        justifyContent: "space-around",
+        flexDirection: "row",
+        flex: 1,
+    },
+    statItem: {
+        alignItems: "center",
+    },
+    statNumber: {
+        fontSize: 17,
+        fontWeight: "700",
+        color: COLORS.white,
+        marginBottom: 4,
+    },
+    statLabel: {
+        fontSize: 13,
+        color: COLORS.grey,
     }
 })
-
