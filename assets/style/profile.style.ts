@@ -32,6 +32,24 @@ export const profileStyle = StyleSheet.create({
     },
     headerIcon: {
         padding: 4,
+    },
+    profileInfo: {
+        padding: 16,
+    },
+    avatarAndStats: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginBottom: 16,
+    },
+    avatarConatiner: {
+        marginRight: 32,
+    },
+    avatar: {
+        width: 86,
+        height: 86,
+        borderRadius: 43,
+        borderWidth: 2,
+        borderColor: COLORS.surface,
     }
 })
 

@@ -3,8 +3,9 @@ import { api } from '@/convex/_generated/api';
 import { useAuth } from '@clerk/clerk-expo';
 import { Ionicons } from '@expo/vector-icons';
 import { useQuery } from 'convex/react';
+import { Image } from 'expo-image';
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, Text, TouchableOpacity, View, } from 'react-native';
 import Loader from '../components/Loader';
 import { COLORS } from '../constants/theme';
 
@@ -25,10 +26,22 @@ export default function profile() {
         </View>
         <View style={profileStyle.headerRight}>
           <TouchableOpacity style={profileStyle.headerIcon} onPress={() => signOut()}>
-            <Ionicons name='log-out-outline' size={24} color={COLORS.white}/>
+            <Ionicons name='log-out-outline' size={24} color={COLORS.white} />
           </TouchableOpacity>
         </View>
       </View>
+      <ScrollView showsVerticalScrollIndicator={false}
+        style={profileStyle.profileInfo}>
+        {/* Avatar and Stats */}
+        <View style={profileStyle.avatarAndStats}>
+          <View style={profileStyle.avatarConatiner}>
+            <Image source={currentUser?.image}
+              style={profileStyle.avatar}
+              contentFit='cover'
+              transition={200} />
+          </View>
+        </View>
+      </ScrollView>
     </View>
   )
 }
