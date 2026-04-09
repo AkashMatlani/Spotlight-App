@@ -1,17 +1,19 @@
 import { profileStyle } from '@/assets/style/profile.style';
 import { api } from '@/convex/_generated/api';
+import { Doc } from '@/convex/_generated/dataModel';
 import { useAuth } from '@clerk/clerk-expo';
 import { Ionicons } from '@expo/vector-icons';
 import { useQuery } from 'convex/react';
 import { Image } from 'expo-image';
 import React, { useState } from 'react';
-import { ScrollView, Text, TouchableOpacity, View, } from 'react-native';
+import { FlatList, ScrollView, Text, TouchableOpacity, View, } from 'react-native';
 import Loader from '../components/Loader';
 import { COLORS } from '../constants/theme';
 
 export default function profile() {
 
   const [isEditModelVisibale, setIsEditModelVisible] = useState(false);
+  const [selectedPost, setSeletedPost] = useState<Doc<"posts"> | null>(null);
   const posts = useQuery(api.posts.getPostByUser, {});
   const { signOut, userId } = useAuth();
 
@@ -71,6 +73,22 @@ export default function profile() {
         </View>
 
         {posts?.length === 0 && <NoPostFound />}
+
+        <FlatList data={posts}
+          numColumns={3}
+          scrollEnabled={false}
+          renderItem={({ item }) => (
+            <TouchableOpacity style={profileStyle.gridItem}
+              onPress={() => setSeletedPost(item)}
+            >
+              <Image source={item.imageUrl}
+                style={profileStyle.gridImage}
+                contentFit='cover'
+                transition={200}>
+              </Image>
+            </TouchableOpacity>
+          )}
+        />
       </ScrollView>
     </View>
   )

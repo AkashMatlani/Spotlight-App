@@ -104,5 +104,14 @@ export const profileStyle = StyleSheet.create({
         aspectRatio: 1,
         alignItems: "center",
         justifyContent: "center",
+    },
+    gridItem: {
+        flex: 1,
+        aspectRatio: 1,
+        padding: 1,
+    },
+    gridImage: {
+        flex: 1,
     }
+
 })
