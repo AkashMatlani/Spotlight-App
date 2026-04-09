@@ -4,13 +4,15 @@ import { useAuth } from '@clerk/clerk-expo';
 import { Ionicons } from '@expo/vector-icons';
 import { useQuery } from 'convex/react';
 import { Image } from 'expo-image';
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView, Text, TouchableOpacity, View, } from 'react-native';
 import Loader from '../components/Loader';
 import { COLORS } from '../constants/theme';
 
 export default function profile() {
 
+  const [isEditModelVisibale, setIsEditModelVisible] = useState(false);
+  const posts = useQuery(api.posts.getPostByUser, {});
   const { signOut, userId } = useAuth();
 
   const currentUser = useQuery(api.users.getUserByClerkId, userId ? { clearkId: userId } : "skip");
@@ -60,14 +62,33 @@ export default function profile() {
         {currentUser?.bio && <Text style={profileStyle.bio}>{currentUser?.bio}</Text>}
 
         <View style={profileStyle.actionButtons}>
-          <TouchableOpacity style={profileStyle.editButton}>
+          <TouchableOpacity style={profileStyle.editButton} onPress={() => setIsEditModelVisible(true)}>
             <Text style={profileStyle.editButtonText}>Edit Profile</Text>
           </TouchableOpacity>
           <TouchableOpacity style={profileStyle.shareButton}>
-            <Ionicons name='share-outline' size={20} color={COLORS.white}/>
+            <Ionicons name='share-outline' size={20} color={COLORS.white} />
           </TouchableOpacity>
         </View>
+
+        {posts?.length === 0 && <NoPostFound />}
       </ScrollView>
+    </View>
+  )
+}
+
+
+function NoPostFound() {
+  return (
+    <View style={{
+      height: "100%",
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: COLORS.background
+    }}
+    >
+      <Ionicons name="image-outline" size={48} color={COLORS.primary} />
+      <Text style={{ fontSize: 20, color: COLORS.white }}>No posts yet</Text>
+
     </View>
   )
 }
