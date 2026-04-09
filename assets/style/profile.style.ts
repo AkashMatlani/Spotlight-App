@@ -68,5 +68,41 @@ export const profileStyle = StyleSheet.create({
     statLabel: {
         fontSize: 13,
         color: COLORS.grey,
+    },
+    name: {
+        fontSize: 15,
+        fontWeight: "600",
+        color: COLORS.white,
+        marginBottom: 4,
+    },
+    bio: {
+        fontSize: 14,
+        color: COLORS.white,
+        lineHeight: 20,
+    },
+    actionButtons: {
+        flexDirection: "row",
+        gap: 8,
+        marginTop: 8,
+    },
+    editButton: {
+        flex: 1,
+        backgroundColor: COLORS.surface,
+        padding: 8,
+        borderRadius: 8,
+        alignItems: "center",
+    },
+    editButtonText: {
+        color: COLORS.white,
+        fontWeight: "600",
+        fontSize: 14,
+    },
+    shareButton: {
+        backgroundColor: COLORS.surface,
+        padding: 8,
+        borderRadius: 8,
+        aspectRatio: 1,
+        alignItems: "center",
+        justifyContent: "center",
     }
 })

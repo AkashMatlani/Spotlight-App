@@ -47,14 +47,25 @@ export default function profile() {
               <Text style={profileStyle.statLabel}>post</Text>
             </View>
             <View style={profileStyle.statItem}>
-               <Text style={profileStyle.statNumber}>{currentUser?.followers}</Text>
-               <Text style={profileStyle.statLabel}>Followers</Text>
+              <Text style={profileStyle.statNumber}>{currentUser?.followers}</Text>
+              <Text style={profileStyle.statLabel}>Followers</Text>
             </View>
-              <View style={profileStyle.statItem}>
+            <View style={profileStyle.statItem}>
               <Text style={profileStyle.statNumber}>{currentUser?.following}</Text>
               <Text style={profileStyle.statLabel}>Following</Text>
             </View>
           </View>
+        </View>
+        <Text style={profileStyle.name}>{currentUser?.fullname}</Text>
+        {currentUser?.bio && <Text style={profileStyle.bio}>{currentUser?.bio}</Text>}
+
+        <View style={profileStyle.actionButtons}>
+          <TouchableOpacity style={profileStyle.editButton}>
+            <Text style={profileStyle.editButtonText}>Edit Profile</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={profileStyle.shareButton}>
+            <Ionicons name='share-outline' size={20} color={COLORS.white}/>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>
