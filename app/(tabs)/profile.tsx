@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useQuery } from 'convex/react';
 import { Image } from 'expo-image';
 import React, { useState } from 'react';
-import { FlatList, ScrollView, Text, TouchableOpacity, View, } from 'react-native';
+import { FlatList, Modal, ScrollView, Text, TouchableOpacity, View, } from 'react-native';
 import Loader from '../components/Loader';
 import { COLORS } from '../constants/theme';
 
@@ -90,6 +90,29 @@ export default function profile() {
           )}
         />
       </ScrollView>
+
+      {/* Selected Image Modal */}
+
+      <Modal visible={!!selectedPost}
+        animationType='fade'
+        transparent={true}
+        onRequestClose={() => setSeletedPost(null)}
+      >
+        <View style={profileStyle.modalBackdrop}>
+          {selectedPost && (
+            <View style={profileStyle.postDetailContainer}>
+              <View style={profileStyle.postDetailHeader}>
+                <TouchableOpacity onPress={()=>setSeletedPost(null)}>
+                  <Ionicons name='close' size={24} color={COLORS.white} />
+                </TouchableOpacity>
+              </View>
+              <Image source={selectedPost.imageUrl}
+                cachePolicy={'memory-disk'}
+                style={profileStyle.postDetailImage}></Image>
+            </View>
+          )}
+        </View>
+      </Modal>
     </View>
   )
 }
@@ -106,7 +129,6 @@ function NoPostFound() {
     >
       <Ionicons name="image-outline" size={48} color={COLORS.primary} />
       <Text style={{ fontSize: 20, color: COLORS.white }}>No posts yet</Text>
-
     </View>
   )
 }
