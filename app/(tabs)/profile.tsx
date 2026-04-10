@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useQuery } from 'convex/react';
 import { Image } from 'expo-image';
 import React, { useState } from 'react';
-import { FlatList, Modal, ScrollView, Text, TouchableOpacity, View, } from 'react-native';
+import { FlatList, Keyboard, KeyboardAvoidingView, Modal, Platform, ScrollView, Text, TouchableOpacity, TouchableWithoutFeedback, View, } from 'react-native';
 import Loader from '../components/Loader';
 import { COLORS } from '../constants/theme';
 
@@ -91,8 +91,31 @@ export default function profile() {
         />
       </ScrollView>
 
-      {/* Selected Image Modal */}
+      {/* Edit Profile Modal */}
+      <Modal visible={isEditModelVisibale}
+        animationType='fade'
+        transparent={true}
+        onRequestClose={() => setIsEditModelVisible(false)}>
 
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? "padding" : "height"}
+            style={profileStyle.modalContainer}
+          >
+            <View style={profileStyle.modalContent}>
+              <View style={profileStyle.modalHeader}>
+                <Text style={profileStyle.modalTitle}>Edit Profile</Text>
+                <TouchableOpacity onPress={() => setIsEditModelVisible(false)}>
+                  <Ionicons name="close" size={24} color={COLORS.white} />
+                </TouchableOpacity>
+              </View>
+            </View>
+          </KeyboardAvoidingView>
+
+        </TouchableWithoutFeedback>
+
+      </Modal>
+
+      {/* Selected Image Modal */}
       <Modal visible={!!selectedPost}
         animationType='fade'
         transparent={true}
@@ -102,7 +125,7 @@ export default function profile() {
           {selectedPost && (
             <View style={profileStyle.postDetailContainer}>
               <View style={profileStyle.postDetailHeader}>
-                <TouchableOpacity onPress={()=>setSeletedPost(null)}>
+                <TouchableOpacity onPress={() => setSeletedPost(null)}>
                   <Ionicons name='close' size={24} color={COLORS.white} />
                 </TouchableOpacity>
               </View>

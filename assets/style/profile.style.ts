@@ -133,6 +133,30 @@ export const profileStyle = StyleSheet.create({
     postDetailImage: {
         width: width,
         height: width,
+    },
+    modalContainer: {
+        flex: 1,
+        backgroundColor: "rgba(0,0.0,0.5)",
+        justifyContent: "flex-end",
+
+    },
+    modalContent: {
+        backgroundColor: COLORS.background,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        padding: 20,
+        maxHeight: 400,
+    },
+    modalHeader: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: 20,
+    },
+    modalTitle: {
+        color: COLORS.white,
+        fontSize: 18,
+        fontWeight: 600,
     }
 
 })
