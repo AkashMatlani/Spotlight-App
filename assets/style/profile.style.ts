@@ -176,7 +176,6 @@ export const profileStyle = StyleSheet.create({
     bioInput: {
         height: 100,
         textAlignVertical: "top",
-
     },
     saveButton:{
         backgroundColor:COLORS.primary,
@@ -190,5 +189,4 @@ export const profileStyle = StyleSheet.create({
         fontSize:16,
         fontWeight:"600",
     }
-
 })

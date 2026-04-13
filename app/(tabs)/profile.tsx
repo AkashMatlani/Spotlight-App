@@ -3,7 +3,7 @@ import { api } from '@/convex/_generated/api';
 import { Doc } from '@/convex/_generated/dataModel';
 import { useAuth } from '@clerk/clerk-expo';
 import { Ionicons } from '@expo/vector-icons';
-import { useQuery } from 'convex/react';
+import { useMutation, useQuery } from 'convex/react';
 import { Image } from 'expo-image';
 import React, { useState } from 'react';
 import { FlatList, Keyboard, KeyboardAvoidingView, Modal, Platform, ScrollView, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View, } from 'react-native';
@@ -24,7 +24,12 @@ export default function profile() {
     bio: currentUser?.bio || "",
   });
 
-  const handleSaveProfile = async() =>{}
+  const updateProfile= useMutation(api.users.updateProfile);
+  
+  const handleSaveProfile = async () => {
+    await updateProfile(editedProfile);
+    setIsEditModelVisible(false);
+  }
 
   if (!currentUser === undefined) return <Loader />
   return (
@@ -124,7 +129,6 @@ export default function profile() {
                   placeholderTextColor={COLORS.grey}
                 ></TextInput>
               </View>
-
               <View style={profileStyle.inputContainer}>
                 <Text style={profileStyle.inputLabel}>Bio</Text>
                 <TextInput
@@ -132,6 +136,8 @@ export default function profile() {
                   value={editedProfile.bio}
                   onChangeText={(text) => setEditedProfile((prev) => ({ ...prev, bio: text }))}
                   placeholderTextColor={COLORS.grey}
+                  multiline
+                  numberOfLines={4}
                 ></TextInput>
               </View>
               <TouchableOpacity onPress={handleSaveProfile} style={profileStyle.saveButton}>
@@ -140,7 +146,6 @@ export default function profile() {
             </View>
           </KeyboardAvoidingView>
         </TouchableWithoutFeedback>
-
       </Modal>
 
       {/* Selected Image Modal */}
