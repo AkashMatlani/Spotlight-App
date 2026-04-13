@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useQuery } from 'convex/react';
 import { Image } from 'expo-image';
 import React, { useState } from 'react';
-import { FlatList, Keyboard, KeyboardAvoidingView, Modal, Platform, ScrollView, Text, TouchableOpacity, TouchableWithoutFeedback, View, } from 'react-native';
+import { FlatList, Keyboard, KeyboardAvoidingView, Modal, Platform, ScrollView, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View, } from 'react-native';
 import Loader from '../components/Loader';
 import { COLORS } from '../constants/theme';
 
@@ -18,6 +18,13 @@ export default function profile() {
   const { signOut, userId } = useAuth();
 
   const currentUser = useQuery(api.users.getUserByClerkId, userId ? { clearkId: userId } : "skip");
+
+  const [editedProfile, setEditedProfile] = useState({
+    fullname: currentUser?.fullname || "",
+    bio: currentUser?.bio || "",
+  });
+
+  const handleSaveProfile = async() =>{}
 
   if (!currentUser === undefined) return <Loader />
   return (
@@ -108,9 +115,30 @@ export default function profile() {
                   <Ionicons name="close" size={24} color={COLORS.white} />
                 </TouchableOpacity>
               </View>
+              <View style={profileStyle.inputContainer}>
+                <Text style={profileStyle.inputLabel}>Name</Text>
+                <TextInput
+                  style={profileStyle.input}
+                  value={editedProfile.fullname}
+                  onChangeText={(text) => setEditedProfile((prev) => ({ ...prev, fullname: text }))}
+                  placeholderTextColor={COLORS.grey}
+                ></TextInput>
+              </View>
+
+              <View style={profileStyle.inputContainer}>
+                <Text style={profileStyle.inputLabel}>Bio</Text>
+                <TextInput
+                  style={[profileStyle.input, profileStyle.bioInput]}
+                  value={editedProfile.bio}
+                  onChangeText={(text) => setEditedProfile((prev) => ({ ...prev, bio: text }))}
+                  placeholderTextColor={COLORS.grey}
+                ></TextInput>
+              </View>
+              <TouchableOpacity onPress={handleSaveProfile} style={profileStyle.saveButton}>
+                <Text style={profileStyle.saveButtonText}> Save Changes</Text>
+              </TouchableOpacity>
             </View>
           </KeyboardAvoidingView>
-
         </TouchableWithoutFeedback>
 
       </Modal>

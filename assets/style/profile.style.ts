@@ -157,6 +157,38 @@ export const profileStyle = StyleSheet.create({
         color: COLORS.white,
         fontSize: 18,
         fontWeight: 600,
+    },
+    inputContainer: {
+        marginBottom: 20,
+    },
+    inputLabel: {
+        color: COLORS.grey,
+        marginBottom: 8,
+        fontSize: 14,
+    },
+    input: {
+        backgroundColor: COLORS.surface,
+        borderRadius: 8,
+        padding: 12,
+        color: COLORS.white,
+        fontSize: 16,
+    },
+    bioInput: {
+        height: 100,
+        textAlignVertical: "top",
+
+    },
+    saveButton:{
+        backgroundColor:COLORS.primary,
+        padding:16,
+        borderRadius:8,
+        alignItems:"center",
+        marginTop:20,
+    },
+    saveButtonText:{
+        color:COLORS.background,
+        fontSize:16,
+        fontWeight:"600",
     }
 
 })
