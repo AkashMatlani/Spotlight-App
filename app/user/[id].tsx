@@ -1,10 +1,13 @@
+import { profileStyle } from '@/assets/style/profile.style'
 import { api } from '@/convex/_generated/api'
 import { Id } from '@/convex/_generated/dataModel'
+import { Ionicons } from '@expo/vector-icons'
 import { useMutation, useQuery } from 'convex/react'
 import { useLocalSearchParams } from 'expo-router'
 import React from 'react'
-import { View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import Loader from '../components/Loader'
+import { COLORS } from '../constants/theme'
 
 export default function UserProfileScreen() {
     const { id } = useLocalSearchParams();
@@ -16,9 +19,18 @@ export default function UserProfileScreen() {
 
     const toogleFollow = useMutation(api.users.toogleFollow);
 
-    if(profile === undefined || post === undefined || isFollowing ===undefined) return <Loader/>
+    const handleBack = () => { };
+
+    if (profile === undefined || post === undefined || isFollowing === undefined) return <Loader />
     return (
-        <View>
+        <View style={profileStyle.container}>
+            <View style={profileStyle.header}>
+                <TouchableOpacity onPress={handleBack}>
+                    <Ionicons name='arrow-back' size={24} color={COLORS.white} />
+                    <Text style={profileStyle.headerTitle}>{profile.username}</Text>
+                    <View style={{ width: 24 }}></View>
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }

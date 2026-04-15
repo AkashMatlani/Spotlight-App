@@ -30,6 +30,11 @@ export const profileStyle = StyleSheet.create({
         flexDirection: "row",
         gap: 16,
     },
+    headerTitle: {
+        fontSize: 18,
+        fontWeight: "600",
+        color: COLORS.white,
+    },
     headerIcon: {
         padding: 4,
     },
@@ -177,16 +182,16 @@ export const profileStyle = StyleSheet.create({
         height: 100,
         textAlignVertical: "top",
     },
-    saveButton:{
-        backgroundColor:COLORS.primary,
-        padding:16,
-        borderRadius:8,
-        alignItems:"center",
-        marginTop:20,
+    saveButton: {
+        backgroundColor: COLORS.primary,
+        padding: 16,
+        borderRadius: 8,
+        alignItems: "center",
+        marginTop: 20,
     },
-    saveButtonText:{
-        color:COLORS.background,
-        fontSize:16,
-        fontWeight:"600",
+    saveButtonText: {
+        color: COLORS.background,
+        fontSize: 16,
+        fontWeight: "600",
     }
 })
