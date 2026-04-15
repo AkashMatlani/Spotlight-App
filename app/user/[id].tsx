@@ -39,8 +39,24 @@ export default function UserProfileScreen() {
                         <Image source={profile.image}
                             style={profileStyle.avatar}
                             contentFit='cover'
-                            cachePolicy="memory-disk"></Image>
+                            cachePolicy="memory-disk">
+                        </Image>
 
+                        {/* Stats*/}
+                        <View style={profileStyle.statsContiner}>
+                            <View style={profileStyle.statItem}>
+                                <Text style={profileStyle.statNumber}>{profile.posts}</Text>
+                                <Text style={profileStyle.statLabel}>Posts</Text>
+                            </View>
+                             <View style={profileStyle.statItem}>
+                                <Text style={profileStyle.statNumber}>{profile.followers}</Text>
+                                <Text style={profileStyle.statLabel}>Followers</Text>
+                            </View>
+                              <View style={profileStyle.statItem}>
+                                <Text style={profileStyle.statNumber}>{profile.following}</Text>
+                                <Text style={profileStyle.statLabel}>Following</Text>
+                            </View>
+                        </View>
                     </View>
                 </View>
             </ScrollView>
