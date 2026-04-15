@@ -3,9 +3,10 @@ import { api } from '@/convex/_generated/api'
 import { Id } from '@/convex/_generated/dataModel'
 import { Ionicons } from '@expo/vector-icons'
 import { useMutation, useQuery } from 'convex/react'
+import { Image } from 'expo-image'
 import { useLocalSearchParams } from 'expo-router'
 import React from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import Loader from '../components/Loader'
 import { COLORS } from '../constants/theme'
 
@@ -27,10 +28,22 @@ export default function UserProfileScreen() {
             <View style={profileStyle.header}>
                 <TouchableOpacity onPress={handleBack}>
                     <Ionicons name='arrow-back' size={24} color={COLORS.white} />
-                    <Text style={profileStyle.headerTitle}>{profile.username}</Text>
-                    <View style={{ width: 24 }}></View>
                 </TouchableOpacity>
+                <Text style={profileStyle.headerTitle}>{profile.username}</Text>
+                <View style={{ width: 24 }} />
             </View>
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <View style={profileStyle.profileInfo}>
+                    <View style={profileStyle.avatarAndStats}>
+                        {/* Avatar */}
+                        <Image source={profile.image}
+                            style={profileStyle.avatar}
+                            contentFit='cover'
+                            cachePolicy="memory-disk"></Image>
+
+                    </View>
+                </View>
+            </ScrollView>
         </View>
     )
 }
