@@ -6,7 +6,7 @@ import { useMutation, useQuery } from 'convex/react'
 import { Image } from 'expo-image'
 import { useLocalSearchParams } from 'expo-router'
 import React from 'react'
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import { Pressable, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import Loader from '../components/Loader'
 import { COLORS } from '../constants/theme'
 
@@ -23,6 +23,8 @@ export default function UserProfileScreen() {
     const handleBack = () => { };
 
     if (profile === undefined || post === undefined || isFollowing === undefined) return <Loader />
+    console.log("ID:", id);
+    console.log("Profile:", profile);
     return (
         <View style={profileStyle.container}>
             <View style={profileStyle.header}>
@@ -48,16 +50,25 @@ export default function UserProfileScreen() {
                                 <Text style={profileStyle.statNumber}>{profile.posts}</Text>
                                 <Text style={profileStyle.statLabel}>Posts</Text>
                             </View>
-                             <View style={profileStyle.statItem}>
+                            <View style={profileStyle.statItem}>
                                 <Text style={profileStyle.statNumber}>{profile.followers}</Text>
                                 <Text style={profileStyle.statLabel}>Followers</Text>
                             </View>
-                              <View style={profileStyle.statItem}>
+                            <View style={profileStyle.statItem}>
                                 <Text style={profileStyle.statNumber}>{profile.following}</Text>
                                 <Text style={profileStyle.statLabel}>Following</Text>
                             </View>
                         </View>
                     </View>
+
+                    <Text style={profileStyle.name}>{profile.fullname}</Text>
+                    {profile.bio && <Text style={profileStyle.bio}>{profile.bio}</Text>}
+
+                    <Pressable style={[profileStyle.followButton, isFollowing && profileStyle.followingButton]}
+                        onPress={() => toogleFollow({ followingId: id as Id<"users"> })}>
+                        <Text style={[profileStyle.followButtonText, isFollowing && profileStyle.followingButtonText]}
+                        >{isFollowing ? "Following" : "Follow"}</Text>
+                    </Pressable>
                 </View>
             </ScrollView>
         </View>

@@ -193,5 +193,28 @@ export const profileStyle = StyleSheet.create({
         color: COLORS.background,
         fontSize: 16,
         fontWeight: "600",
+    },
+
+    followButton: {
+        backgroundColor: COLORS.primary,
+        paddingHorizontal: 24,
+        paddingVertical: 8,
+        borderRadius: 8,
+        marginTop: 16,
+    },
+    followingButton: {
+        color: COLORS.surface,
+        borderWidth: 1,
+        borderColor: COLORS.primary
+    },
+    followButtonText: {
+        color: COLORS.white,
+        fontSize: 14,
+        fontWeight: "600",
+        textAlign: "center",
+    },
+    followingButtonText: {
+        color: COLORS.white,
+        textAlign: "center",
     }
 })

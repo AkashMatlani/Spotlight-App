@@ -147,8 +147,8 @@ async function updateFollowCount(
         await ctx.db.patch(followerId, {
             following: follower.following + (isFollow ? 1 : -1),
         })
-        await ctx.db.patch(followerId, {
-            followers: following.followers + (isFollow ? 1 : -1),
+        await ctx.db.patch(followingId, {
+            followers:  Math.max(0,following.followers + (isFollow ? 1 : -1)),
         })
     }
 
