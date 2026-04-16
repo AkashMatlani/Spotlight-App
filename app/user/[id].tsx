@@ -4,9 +4,9 @@ import { Id } from '@/convex/_generated/dataModel'
 import { Ionicons } from '@expo/vector-icons'
 import { useMutation, useQuery } from 'convex/react'
 import { Image } from 'expo-image'
-import { useLocalSearchParams } from 'expo-router'
+import { useLocalSearchParams, useRouter } from 'expo-router'
 import React from 'react'
-import { Pressable, ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, Pressable, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import Loader from '../components/Loader'
 import { COLORS } from '../constants/theme'
 
@@ -14,17 +14,21 @@ export default function UserProfileScreen() {
     const { id } = useLocalSearchParams();
 
     const profile = useQuery(api.users.getUserProfile, { id: id as Id<"users"> });
-    const post = useQuery(api.posts.getPostByUser, { userId: id as Id<"users"> });
+    const posts = useQuery(api.posts.getPostByUser, { userId: id as Id<"users"> });
 
     const isFollowing = useQuery(api.users.isFollowing, { followingId: id as Id<"users"> });
 
     const toogleFollow = useMutation(api.users.toogleFollow);
 
-    const handleBack = () => { };
+    const router = useRouter();
 
-    if (profile === undefined || post === undefined || isFollowing === undefined) return <Loader />
-    console.log("ID:", id);
-    console.log("Profile:", profile);
+    const handleBack = () => {
+        if (router.canGoBack())  router.back();
+        else 
+        router.replace("/(tabs)");
+    };
+
+    if (profile === undefined || posts === undefined || isFollowing === undefined) return <Loader />
     return (
         <View style={profileStyle.container}>
             <View style={profileStyle.header}>
@@ -69,6 +73,31 @@ export default function UserProfileScreen() {
                         <Text style={[profileStyle.followButtonText, isFollowing && profileStyle.followingButtonText]}
                         >{isFollowing ? "Following" : "Follow"}</Text>
                     </Pressable>
+                </View>
+
+                <View style={profileStyle.postGrid}>
+                    {posts.length === 0 ? (
+                        <View style={profileStyle.noPostContainer}>
+                            <Ionicons name='image-outline' size={48} color={COLORS.grey} />
+                            <Text style={profileStyle.noPostsText}>No posts yet</Text>
+                        </View>
+                    ) : (
+                        <FlatList
+                            data={posts}
+                            numColumns={3}
+                            scrollEnabled={false}
+                            renderItem={({ item }) => (
+                                <TouchableOpacity style={profileStyle.gridItem}>
+                                    <Image source={item.imageUrl}
+                                        style={profileStyle.gridImage}
+                                        contentFit='cover'
+                                        transition={200}
+                                        cachePolicy='memory-disk'></Image>
+                                </TouchableOpacity>
+                            )}
+                            keyExtractor={(item) => item._id}
+                        ></FlatList>
+                    )}
                 </View>
             </ScrollView>
         </View>

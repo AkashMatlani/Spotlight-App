@@ -216,5 +216,22 @@ export const profileStyle = StyleSheet.create({
     followingButtonText: {
         color: COLORS.white,
         textAlign: "center",
+    },
+    postGrid: {
+        flexDirection: "row",
+        flex: 1,
+        flexWrap: "wrap",
+        justifyContent: "space-between",
+    },
+    noPostContainer: {
+        alignItems:"center",
+        justifyContent:"center",
+        paddingVertical:48,
+        gap:12,
+        flex:1,
+    },
+    noPostsText: {
+        color:COLORS.grey,
+        fontSize:16,
     }
 })
