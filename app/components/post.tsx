@@ -32,12 +32,8 @@ type PostProps = {
 };
 export default function Post({ post }: PostProps) {
     const [isLiked, setIsLiked] = useState(post.isLiked);
-    const [likesCount, setLikesCount] = useState(post.likes);
     const [isBookmarked, setIsBookmarked] = useState(post.isBookmarked);
-
-    const [commentsCount, setcommentsCount] = useState(post.comments);
     const [showComments, setshowComments] = useState(false);
-
     const toggleLike = useMutation(api.posts.toggleLike);
     const toogleBookmark = useMutation(api.bookmarks.toggelMutation);
     const deletePost = useMutation(api.posts.deletePost);
@@ -46,12 +42,10 @@ export default function Post({ post }: PostProps) {
 
     const currentUser = useQuery(api.users.getUserByClerkId, user ? { clearkId: user.id } : "skip")
 
-
     const handleLike = async () => {
         try {
             const newIsLiked = await toggleLike({ postId: post._id })
             setIsLiked(newIsLiked);
-            setLikesCount((prev) => (newIsLiked ? prev + 1 : prev - 1))
         } catch (error) {
             console.error("Error in toogle Like", error);
         }
@@ -69,7 +63,7 @@ export default function Post({ post }: PostProps) {
             console.error("Error in deleting post", error);
         }
     }
-
+    
     return (
         <View style={feedStyles.post}>
             {/* Post Header */}
@@ -134,7 +128,7 @@ export default function Post({ post }: PostProps) {
             {/* POST INFO */}
             <View style={feedStyles.postInfo}>
                 <Text style={feedStyles.likeText}>
-                    {likesCount > 0 ? `${likesCount.toLocaleString()} likes` : "Be the first to Like"}
+                    {post.likes > 0 ? `${post.likes.toLocaleString()} likes` : "Be the first to Like"}
                 </Text>
                 {post.caption && (
                     <View style={feedStyles.captionContainer}>
@@ -143,9 +137,9 @@ export default function Post({ post }: PostProps) {
                     </View>
                 )}
 
-                {commentsCount > 0 && (
-                    <TouchableOpacity onPress={() => setshowComments(true)}>
-                        <Text style={feedStyles.commentsText}>View all {commentsCount} comments</Text>
+                {post.comments > 0 && (
+                    <TouchableOpacity onPress={() => setshowComments(true)}> 
+                        <Text style={feedStyles.commentsText}>View all {post.comments} comments</Text>
                     </TouchableOpacity>
                 )}
 
@@ -155,7 +149,6 @@ export default function Post({ post }: PostProps) {
                 postId={post._id}
                 visible={showComments}
                 onClose={() => setshowComments(false)}
-                onCommentsAdded={() => setcommentsCount((prev) => prev + 1)}
             />
         </View>
     )
