@@ -3,8 +3,8 @@ import { api } from '@/convex/_generated/api';
 import { useAuth } from '@clerk/clerk-expo';
 import { Ionicons } from '@expo/vector-icons';
 import { useQuery } from 'convex/react';
-import React from 'react';
-import { FlatList, Text, TouchableOpacity, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { FlatList, RefreshControl, Text, TouchableOpacity, View } from 'react-native';
 import Loader from '../components/Loader';
 import Post from '../components/post';
 import StoriesSection from '../components/Stories';
@@ -12,10 +12,26 @@ import { COLORS } from '../constants/theme';
 export default function Index() {
   const { signOut } = useAuth();
 
-  const posts = useQuery(api.posts.getFeedPosts);
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  const posts = useQuery(api.posts.getFeedPosts, {refreshKey});
+
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const isLoading = posts ===undefined;
+  
+  const handleRefresh = async () => {
+    setIsRefreshing(true);
+    setRefreshKey((prev) => prev + 1);
+    useEffect(() => {
+      if (posts !== undefined) {
+        setIsRefreshing(false);
+      }
+    }, [posts]);
+  }
 
   //undefined means loading state
-  if (posts === undefined) return <Loader />
+  if (isLoading) return <Loader />
 
   if (posts.length === 0) return <NoPostsFound />
   return (
@@ -33,6 +49,13 @@ export default function Index() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 60 }}
         ListHeaderComponent={<StoriesSection />}
+        refreshControl={
+          <RefreshControl
+            onRefresh={handleRefresh}
+            refreshing={isRefreshing || isLoading}
+            tintColor={COLORS.primary}
+          ></RefreshControl>
+        }
       />
     </View>
   );

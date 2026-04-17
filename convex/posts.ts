@@ -41,6 +41,9 @@ export const createPost = mutation({
 })
 
 export const getFeedPosts = query({
+    args: {
+        refreshKey: v.optional(v.number()),
+    },
     handler: async (ctx) => {
         const currentUser = await getAuthenticatedUser(ctx);
         //get all posts
