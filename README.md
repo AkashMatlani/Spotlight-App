@@ -58,3 +58,21 @@ EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=your_publishable_key
 CONVEX_DEPLOYMENT=your_deployment_name
 EXPO_PUBLIC_CONVEX_URL=your_convex_url
 ```
+
+---
+
+## 📸 Screenshots
+
+<p align="center">
+  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:16px;">
+
+    <img src="assets/screenshots/MainScreen.jpeg" width="220" alt="Main Screen" style="border-radius:12px;"/>
+
+    <img src="assets/screenshots/HomeScreen.jpeg" width="220" alt="Home Screen" style="border-radius:12px;"/>
+
+    <img src="assets/screenshots/NotificationScreen.jpeg" width="220" alt="Notification Screen" style="border-radius:12px;"/>
+
+    <img src="assets/screenshots/ProfileScreen.jpeg" width="220" alt="Profile Screen" style="border-radius:12px;"/>
+
+  </div>
+</p>
