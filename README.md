@@ -65,9 +65,9 @@ EXPO_PUBLIC_CONVEX_URL=your_convex_url
 
 <p align="center">
 
-<img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/main/assets/screenshots/MainScreen.jpeg" width="220" alt="Main Screen" />
-<img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/main/assets/screenshots/HomeScreen.jpeg" width="220" alt="Home Screen" />
-<img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/main/assets/screenshots/NotificationScreen.jpeg" width="220" alt="Notification Screen" />
-<img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/main/assets/screenshots/ProfileScreen.jpeg" width="220" alt="Profile Screen" />
+<img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/MainScreen.jpeg" width="220" />
+<img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/HomeScreen.jpeg" width="220" />
+<img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/NotificationScreen.jpeg" width="220" />
+<img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/ProfileScreen.jpeg" width="220" />
 
 </p>
