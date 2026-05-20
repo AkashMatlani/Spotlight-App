@@ -76,9 +76,7 @@ EXPO_PUBLIC_CONVEX_URL=your_convex_url
       <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/HomeScreen.jpeg" width="220"/><br/>
       <sub><b>Home</b></sub>
     </td>
-  </tr>
 
-  <tr>
     <td align="center">
       <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/NotificationScreen.jpeg" width="220"/><br/>
       <sub><b>Notifications</b></sub>
