@@ -67,25 +67,31 @@ EXPO_PUBLIC_CONVEX_URL=your_convex_url
 
 <table>
   <tr>
+
     <td align="center">
-      <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/MainScreen.jpeg" width="220"/><br/>
-      <sub><b>Main Feed</b></sub>
+      <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/MainScreen.jpeg"
+      width="200" height="420" style="border-radius:18px; object-fit:cover;" />
+      <br/><sub><b>Main Feed</b></sub>
     </td>
 
     <td align="center">
-      <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/HomeScreen.jpeg" width="220"/><br/>
-      <sub><b>Home</b></sub>
+      <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/HomeScreen.jpeg"
+      width="200" height="420" style="border-radius:18px; object-fit:cover;" />
+      <br/><sub><b>Home</b></sub>
     </td>
 
     <td align="center">
-      <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/NotificationScreen.jpeg" width="220"/><br/>
-      <sub><b>Notifications</b></sub>
+      <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/NotificationScreen.jpeg"
+      width="200" height="420" style="border-radius:18px; object-fit:cover;" />
+      <br/><sub><b>Notifications</b></sub>
     </td>
 
     <td align="center">
-      <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/ProfileScreen.jpeg" width="220"/><br/>
-      <sub><b>Profile</b></sub>
+      <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/ProfileScreen.jpeg"
+      width="200" height="420" style="border-radius:18px; object-fit:cover;" />
+      <br/><sub><b>Profile</b></sub>
     </td>
+
   </tr>
 </table>
 
