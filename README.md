@@ -64,8 +64,8 @@ EXPO_PUBLIC_CONVEX_URL=your_convex_url
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/MainScreen.jpeg" width="180" />
-  <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/HomeScreen.jpeg" width="180" />
-  <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/NotificationScreen.jpeg" width="180" />
-  <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/ProfileScreen.jpeg" width="180" />
+  <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/MainScreen.jpeg" width="180" height="300" />
+  <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/HomeScreen.jpeg" width="180" height="300"  />
+  <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/NotificationScreen.jpeg" width="180" height="300"  />
+  <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/ProfileScreen.jpeg" width="180" height="300"  />
 </p>
