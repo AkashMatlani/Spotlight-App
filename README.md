@@ -63,18 +63,32 @@ EXPO_PUBLIC_CONVEX_URL=your_convex_url
 
 ## 📸 Screenshots
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/MainScreen.jpeg"
-      width="240" style="margin:10px;" />
+<div align="center">
 
-  <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/HomeScreen.jpeg"
-      width="240" style="margin:10px;" />
-</p>
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/MainScreen.jpeg" width="220"/><br/>
+      <sub><b>Main Feed</b></sub>
+    </td>
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/NotificationScreen.jpeg"
-      width="240" style="margin:10px;" />
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/HomeScreen.jpeg" width="220"/><br/>
+      <sub><b>Home</b></sub>
+    </td>
+  </tr>
 
-  <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/ProfileScreen.jpeg"
-      width="240" style="margin:10px;" />
-</p>
+  <tr>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/NotificationScreen.jpeg" width="220"/><br/>
+      <sub><b>Notifications</b></sub>
+    </td>
+
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/ProfileScreen.jpeg" width="220"/><br/>
+      <sub><b>Profile</b></sub>
+    </td>
+  </tr>
+</table>
+
+</div>
