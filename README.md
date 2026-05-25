@@ -6,6 +6,17 @@ This project takes you from **zero to production-ready app**, running seamlessly
 
 ---
 
+## 📸 Screenshots
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/MainScreen.jpeg" width="180" height="350" />
+  <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/HomeScreen.jpeg" width="180" height="350"  />
+  <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/NotificationScreen.jpeg" width="180" height="350"  />
+  <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/ProfileScreen.jpeg" width="180" height="350"  />
+</p>
+
+---
+
 ## 🎯 What You’ll Build
 
 Spotlight is not just a UI clone — it’s a **real-time, production-style social network**.
@@ -58,14 +69,3 @@ EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=your_publishable_key
 CONVEX_DEPLOYMENT=your_deployment_name
 EXPO_PUBLIC_CONVEX_URL=your_convex_url
 ```
-
----
-
-## 📸 Screenshots
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/MainScreen.jpeg" width="180" height="350" />
-  <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/HomeScreen.jpeg" width="180" height="350"  />
-  <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/NotificationScreen.jpeg" width="180" height="350"  />
-  <img src="https://raw.githubusercontent.com/AkashMatlani/Spotlight-App/master/assets/screenshots/ProfileScreen.jpeg" width="180" height="350"  />
-</p>
